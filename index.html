@@ -37,6 +37,12 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
 .legend{display:flex;gap:15px;flex-wrap:wrap;margin-top:15px;color:var(--muted);font-size:12px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .dot{width:9px;height:9px;border-radius:3px;background:#8b5cf6}.dot.chem{background:#f59e0b}.dot.maths{background:#22c55e}
+.bar-col{cursor:pointer}
+.chart-tooltip{position:fixed;z-index:80;background:#1b1f2b;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:12px;pointer-events:none;display:none;box-shadow:0 14px 34px #000a;min-width:150px}
+.chart-tooltip .tt-date{font-weight:800;font-size:12.5px;margin-bottom:8px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+.chart-tooltip .tt-row{display:flex;align-items:center;gap:7px;margin:5px 0;color:#cbd5e1;white-space:nowrap}
+.chart-tooltip .tt-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.chart-tooltip .tt-total{margin-top:8px;padding-top:7px;border-top:1px solid var(--border);font-weight:800;white-space:nowrap}
 .subject-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
 .subject-box{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:15px}
 .subject-box .slabel{font-size:11px;color:var(--muted);font-weight:700}
@@ -347,6 +353,7 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
 </main>
 </div>
 <div class="toast" id="toast"></div>
+<div class="chart-tooltip" id="chartTooltip"></div>
 
 <script>
 // Defensive JSON load: if a localStorage value is missing OR corrupted,
@@ -813,7 +820,7 @@ function renderAnalytics(){
     const p=(vals[i]/max)*100;
     const phy=secondsForDate(d,'Physics'),chem=secondsForDate(d,'Chemistry'),maths=secondsForDate(d,'Maths');
     const totalDay=Math.max(phy+chem+maths,1);
-    return `<div class="bar-col">
+    return `<div class="bar-col" data-date="${d}">
       <div class="bar-value">${vals[i]?fmtTime(vals[i]):''}</div>
       <div class="bar-stack" style="--pct:${p}">
         <div class="bar-subject maths" style="height:${maths/totalDay*100}%"></div>
@@ -840,6 +847,59 @@ function rangeSecondsSubject(start,end,subject){
 }
 updateTimer();
 renderAnalytics();
+
+/* ===== Chart hover tooltip (like the reference Pomofocus screenshots) ===== */
+(function(){
+  const chartEl=document.getElementById('focusChart');
+  const tip=document.getElementById('chartTooltip');
+  if(!chartEl||!tip)return;
+
+  function showTooltip(e,col){
+    const d=col.dataset.date;
+    if(!d){hideTooltip();return}
+    const phy=secondsForDate(d,'Physics'),chem=secondsForDate(d,'Chemistry'),maths=secondsForDate(d,'Maths');
+    const totalDay=phy+chem+maths;
+    const dow=dateObj(d).toLocaleDateString('en-IN',{weekday:'short'});
+    const md=dateObj(d).toLocaleDateString('en-IN',{day:'2-digit',month:'short'});
+    tip.innerHTML=`<div class="tt-date">${md} (${dow})</div>
+      <div class="tt-row"><span class="tt-dot" style="background:#f59e0b"></span>CHEM: ${fmtTime(chem)}</div>
+      <div class="tt-row"><span class="tt-dot" style="background:#8b5cf6"></span>PHY: ${fmtTime(phy)}</div>
+      <div class="tt-row"><span class="tt-dot" style="background:#22c55e"></span>MATHS: ${fmtTime(maths)}</div>
+      <div class="tt-total">TOTAL: ${fmtTime(totalDay)}</div>`;
+    tip.style.display='block';
+    positionTooltip(e);
+  }
+  function positionTooltip(e){
+    const pad=14;
+    let x=e.clientX+pad, y=e.clientY-10;
+    const rect=tip.getBoundingClientRect();
+    const vw=window.innerWidth, vh=window.innerHeight;
+    if(x+rect.width>vw-10) x=e.clientX-rect.width-pad;
+    if(y+rect.height>vh-10) y=vh-rect.height-10;
+    if(y<10) y=10;
+    tip.style.left=x+'px';
+    tip.style.top=y+'px';
+  }
+  function hideTooltip(){tip.style.display='none'}
+
+  chartEl.addEventListener('mousemove',e=>{
+    const col=e.target.closest('.bar-col');
+    if(!col){hideTooltip();return}
+    showTooltip(e,col);
+  });
+  chartEl.addEventListener('mouseleave',hideTooltip);
+
+  // Basic touch support: tap a bar to show/hide its tooltip.
+  chartEl.addEventListener('touchstart',e=>{
+    const touch=e.touches[0];
+    const col=document.elementFromPoint(touch.clientX,touch.clientY)?.closest('.bar-col');
+    if(!col){hideTooltip();return}
+    showTooltip({clientX:touch.clientX,clientY:touch.clientY},col);
+  },{passive:true});
+  document.addEventListener('touchstart',e=>{
+    if(!e.target.closest('.bar-col'))hideTooltip();
+  },{passive:true});
+})();
 
 
 /* ===== Targets ===== */

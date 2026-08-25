@@ -152,9 +152,11 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
         <div class="field"><label>Subject</label><select id="subject" required><option value="">Choose</option><option>Physics</option><option>Chemistry</option><option>Maths</option></select></div>
         <div class="field"><label>Questions solved</label><input id="questions" type="number" min="0" value="0"></div>
       </div>
-      <div class="row">
-        <div class="field"><label>Chapter</label><input id="chapter" placeholder="e.g. Ray Optics" required></div>
-        <div class="field"><label>Topic / lesson</label><select id="topic" required><option value="">Choose lesson</option></select><div class="date" style="margin-top:6px">Choose a standard JEE lesson from the list.</div></div>
+      <div class="field">
+        <label>Lesson</label>
+        <select id="topic" required><option value="">Choose lesson</option></select>
+        <input id="customLesson" placeholder="Type your lesson name" style="margin-top:8px;display:none">
+        <div class="date" style="margin-top:6px">Choose a standard JEE lesson, or pick "Other" to type your own.</div>
       </div>
       <button class="btn primary" type="submit">Save & schedule revisions →</button>
     </form>
@@ -406,8 +408,16 @@ const lessonLists={
  Chemistry:["Mole Concept","Atomic Structure","Periodic Table","Chemical Bonding","States of Matter","Thermodynamics","Chemical Equilibrium","Ionic Equilibrium","Redox Reactions","Solutions","Electrochemistry","Chemical Kinetics","Surface Chemistry","Coordination Compounds","Metallurgy","p-Block","d- and f-Block","Hydrogen","s-Block","GOC","Isomerism","Hydrocarbons","Haloalkanes & Haloarenes","Alcohols, Phenols & Ethers","Aldehydes & Ketones","Carboxylic Acids","Amines","Biomolecules","Polymers","Chemistry in Everyday Life","Practical Chemistry"],
  Maths:["Sets, Relations & Functions","Basic Mathematics","Quadratic Equations","Sequence & Series","Trigonometric Functions","Trigonometric Equations","Complex Numbers","Binomial Theorem","Permutations & Combinations","Probability","Statistics","Matrices","Determinants","Straight Lines","Circle","Parabola","Ellipse","Hyperbola","Limits","Continuity & Differentiability","Application of Derivatives","Indefinite Integration","Definite Integration","Area Under Curve","Differential Equations","Vector Algebra","3D Geometry"]
 };
-function populateLessons(){const subject=document.getElementById('subject').value,sel=document.getElementById('topic');sel.innerHTML='<option value="">Choose lesson</option>'+(lessonLists[subject]||[]).map(x=>`<option>${esc(x)}</option>`).join('')+'<option value="Other">Other / custom lesson</option>';}
+function populateLessons(){const subject=document.getElementById('subject').value,sel=document.getElementById('topic');sel.innerHTML='<option value="">Choose lesson</option>'+(lessonLists[subject]||[]).map(x=>`<option>${esc(x)}</option>`).join('')+'<option value="Other">Other / custom lesson</option>';toggleCustomLesson();}
 document.getElementById('subject').addEventListener('change',populateLessons);populateLessons();
+document.getElementById('topic').addEventListener('change',toggleCustomLesson);
+document.getElementById('studyForm').addEventListener('reset',()=>setTimeout(toggleCustomLesson,0));
+function toggleCustomLesson(){
+ const isOther=document.getElementById('topic').value==='Other';
+ const box=document.getElementById('customLesson');
+ box.style.display=isOther?'block':'none';
+ if(isOther)box.focus();else box.value='';
+}
 
 const LEARNING_WINDOW_DAYS=7; // still counts as "actively practicing", not a spaced revision yet
 
@@ -415,8 +425,12 @@ document.getElementById('studyForm').onsubmit=e=>{
  e.preventDefault();
  let studied=todayKey();
  const subject=document.getElementById('subject').value;
- const chapter=document.getElementById('chapter').value.trim();
- const topic=document.getElementById('topic').value.trim();
+ let lesson=document.getElementById('topic').value.trim();
+ if(lesson==='Other'){
+   lesson=document.getElementById('customLesson').value.trim();
+   if(!lesson){toast('Type your custom lesson name');document.getElementById('customLesson').focus();return}
+ }
+ const chapter=lesson, topic=lesson;
  const questions=+document.getElementById('questions').value||0;
 
  const matches=x=>x.subject.toLowerCase()===subject.toLowerCase() &&
@@ -516,14 +530,14 @@ function renderDashboard(){
  let box=document.getElementById('todayList');
  box.innerHTML=!d.length
    ?'<div class="empty">Nothing due today. Nice work 🎉</div>'
-   :d.map(({x,r})=>`<div class="revision"><div><div class="subject">${x.subject.toUpperCase()} • REVISION ${r.n}</div><h3>${esc(x.topic)}</h3><p>${esc(x.chapter)} • scheduled ${nice(r.date)}</p></div><div class="actions"><button class="btn success" onclick="complete(${x.id},${r.n})">✓ Done</button></div></div>`).join('');
+   :d.map(({x,r})=>`<div class="revision"><div><div class="subject">${x.subject.toUpperCase()} • REVISION ${r.n}</div><h3>${esc(x.topic)}</h3><p>${chapterPrefix(x)}scheduled ${nice(r.date)}</p></div><div class="actions"><button class="btn success" onclick="complete(${x.id},${r.n})">✓ Done</button></div></div>`).join('');
 
  const ubox=document.getElementById('upcomingList');
  if(ubox){
    const u=upcoming();
    ubox.innerHTML=!u.length
      ?'<div class="empty">No upcoming revisions scheduled.</div>'
-     :u.map(({x,r})=>`<div class="revision"><div><div class="subject">${x.subject.toUpperCase()} • REVISION ${r.n}</div><h3>${esc(x.topic)}</h3><p>${esc(x.chapter)} • ${nice(r.date)}</p></div></div>`).join('');
+     :u.map(({x,r})=>`<div class="revision"><div><div class="subject">${x.subject.toUpperCase()} • REVISION ${r.n}</div><h3>${esc(x.topic)}</h3><p>${chapterPrefix(x)}${nice(r.date)}</p></div></div>`).join('');
  }
 
  const tbox=document.getElementById('recentTestsList');
@@ -548,11 +562,15 @@ function renderTopics(){
    const practiceNote=sessions.length>1
      ? `Practiced ${sessions.length} days (${nice(sessions[0].date)} → ${nice(sessions[sessions.length-1].date)})`
      : `${nice(x.studied)}`;
-   return `<div class="topic"><div class="topic-top"><div><div class="eyebrow">${x.subject}</div><h3>${esc(x.topic)}</h3><small>${esc(x.chapter)} • ${practiceNote} • ${x.questions} questions total</small></div></div><div class="badges">${x.revisions.map(r=>`<span class="badge ${r.done?'done':''}">R${r.n} · ${nice(r.date)}${r.done?' ✓':''}</span>`).join('')}</div></div>`;
+   return `<div class="topic"><div class="topic-top"><div><div class="eyebrow">${x.subject}</div><h3>${esc(x.topic)}</h3><small>${chapterPrefix(x)}${practiceNote} • ${x.questions} questions total</small></div></div><div class="badges">${x.revisions.map(r=>`<span class="badge ${r.done?'done':''}">R${r.n} · ${nice(r.date)}${r.done?' ✓':''}</span>`).join('')}</div></div>`;
  }).join('');
 }
 
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function chapterPrefix(x){
+ if(!x.chapter||x.chapter.toLowerCase()===String(x.topic||'').toLowerCase())return '';
+ return esc(x.chapter)+' • ';
+}
 function clearAll(){if(confirm('Delete all your saved JEE revision data?')){data=[];save();render();toast('All data cleared')}}
 function render(){
  document.getElementById('todayText').textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});

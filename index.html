@@ -379,6 +379,7 @@ data=data.filter(x=>x&&typeof x==='object').map(x=>({
   topic:x.topic||'',
   questions:Number(x.questions)||0,
   studied:x.studied||todayKeySafe(),
+  sessions:Array.isArray(x.sessions)&&x.sessions.length?x.sessions:[{date:x.studied||todayKeySafe(),questions:Number(x.questions)||0}],
   revisions:Array.isArray(x.revisions)?x.revisions:intervals.map((days,i)=>({n:i+1,date:addDays(x.studied||todayKeySafe(),days),done:false}))
 }));
 function todayKeySafe(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
@@ -387,6 +388,7 @@ function pad(n){return String(n).padStart(2,'0')}
 function key(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
 function todayKey(){return key(new Date())}
 function addDays(s,n){let d=new Date(s+'T00:00:00');d.setDate(d.getDate()+n);return key(d)}
+function daysBetween(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000)}
 function nice(s){return new Date(s+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}
 function save(){localStorage.setItem('jeeRevisionData',JSON.stringify(data))}
 function toast(t){let e=document.getElementById('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',2200)}
@@ -407,6 +409,8 @@ const lessonLists={
 function populateLessons(){const subject=document.getElementById('subject').value,sel=document.getElementById('topic');sel.innerHTML='<option value="">Choose lesson</option>'+(lessonLists[subject]||[]).map(x=>`<option>${esc(x)}</option>`).join('')+'<option value="Other">Other / custom lesson</option>';}
 document.getElementById('subject').addEventListener('change',populateLessons);populateLessons();
 
+const LEARNING_WINDOW_DAYS=7; // still counts as "actively practicing", not a spaced revision yet
+
 document.getElementById('studyForm').onsubmit=e=>{
  e.preventDefault();
  let studied=todayKey();
@@ -415,19 +419,45 @@ document.getElementById('studyForm').onsubmit=e=>{
  const topic=document.getElementById('topic').value.trim();
  const questions=+document.getElementById('questions').value||0;
 
- // Same subject + chapter + topic on the same day = one study session.
- const existing=data.find(x =>
-   x.subject.toLowerCase()===subject.toLowerCase() &&
+ const matches=x=>x.subject.toLowerCase()===subject.toLowerCase() &&
    x.chapter.toLowerCase()===chapter.toLowerCase() &&
-   x.topic.toLowerCase()===topic.toLowerCase() &&
-   x.studied===studied
- );
+   x.topic.toLowerCase()===topic.toLowerCase();
 
- if(existing){
-   existing.questions += questions;
+ // Same lesson entered again today — just add the extra questions to today's session.
+ const sameDay=data.find(x=>matches(x)&&x.studied===studied);
+ if(sameDay){
+   sameDay.questions+=questions;
+   if(!Array.isArray(sameDay.sessions))sameDay.sessions=[{date:sameDay.studied,questions:sameDay.questions}];
+   const todaySession=sameDay.sessions.find(s=>s.date===studied);
+   if(todaySession)todaySession.questions+=questions;else sameDay.sessions.push({date:studied,questions});
    save();
    e.target.reset();
-   toast('Same lesson today — merged into the existing session ✓');
+   toast("Same lesson today — merged into today's session ✓");
+   showPage('dashboard');
+   return;
+ }
+
+ // Same lesson practiced again within the last few days, and you haven't
+ // actually revised it yet — this is still the same practice block (e.g.
+ // solving PYQs from one chapter over 4-5 days). Keep it as ONE entry and
+ // push the revision schedule to start from today, instead of stacking a
+ // brand-new 3/7/14/30/60-day chain on top of the old one.
+ const ongoing=data.find(x=>matches(x) &&
+   !x.revisions.some(r=>r.done) &&
+   daysBetween(x.studied,studied)>=0 &&
+   daysBetween(x.studied,studied)<=LEARNING_WINDOW_DAYS
+ );
+ if(ongoing){
+   ongoing.questions+=questions;
+   ongoing.studied=studied;
+   ongoing.revisions=intervals.map((days,i)=>({n:i+1,date:addDays(studied,days),done:false}));
+   if(!Array.isArray(ongoing.sessions))ongoing.sessions=[{date:ongoing.studied,questions:ongoing.questions}];
+   ongoing.sessions.push({date:studied,questions});
+   data=data.filter(x=>x.id!==ongoing.id);
+   data.unshift(ongoing);
+   save();
+   e.target.reset();
+   toast(`Still on this lesson — day ${ongoing.sessions.length} logged. Revisions will start once you move on 📌`);
    showPage('dashboard');
    return;
  }
@@ -439,6 +469,7 @@ document.getElementById('studyForm').onsubmit=e=>{
    topic,
    questions,
    studied,
+   sessions:[{date:studied,questions}],
    revisions:intervals.map((days,i)=>({n:i+1,date:addDays(studied,days),done:false}))
  };
  data.unshift(item);save();e.target.reset();toast('Study saved — revisions scheduled 🚀');showPage('dashboard');
@@ -512,7 +543,13 @@ function renderDashboard(){
 function renderTopics(){
  let box=document.getElementById('allTopics');
  if(!data.length){box.innerHTML='<div class="empty">No study sessions yet. Add your first topic.</div>';return}
- box.innerHTML=data.map(x=>`<div class="topic"><div class="topic-top"><div><div class="eyebrow">${x.subject}</div><h3>${esc(x.topic)}</h3><small>${esc(x.chapter)} • ${nice(x.studied)} • ${x.questions} questions</small></div></div><div class="badges">${x.revisions.map(r=>`<span class="badge ${r.done?'done':''}">R${r.n} · ${nice(r.date)}${r.done?' ✓':''}</span>`).join('')}</div></div>`).join('');
+ box.innerHTML=data.map(x=>{
+   const sessions=Array.isArray(x.sessions)?x.sessions:[];
+   const practiceNote=sessions.length>1
+     ? `Practiced ${sessions.length} days (${nice(sessions[0].date)} → ${nice(sessions[sessions.length-1].date)})`
+     : `${nice(x.studied)}`;
+   return `<div class="topic"><div class="topic-top"><div><div class="eyebrow">${x.subject}</div><h3>${esc(x.topic)}</h3><small>${esc(x.chapter)} • ${practiceNote} • ${x.questions} questions total</small></div></div><div class="badges">${x.revisions.map(r=>`<span class="badge ${r.done?'done':''}">R${r.n} · ${nice(r.date)}${r.done?' ✓':''}</span>`).join('')}</div></div>`;
+ }).join('');
 }
 
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}

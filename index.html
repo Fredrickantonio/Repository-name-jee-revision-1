@@ -11,7 +11,18 @@
   --green:#22c55e;--red:#ef4444;--yellow:#f59e0b;--blue:#38bdf8;
 }
 *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 80% 0%,#24163f 0,transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
-button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{width:235px;border-right:1px solid var(--border);padding:24px 16px;position:fixed;height:100vh;background:#0d1016}.brand{font-weight:800;font-size:20px;padding:8px 10px 28px}.brand span{color:var(--accent2)}.nav button{display:block;width:100%;background:none;border:0;color:var(--muted);text-align:left;padding:12px 13px;border-radius:10px;margin:4px 0;cursor:pointer}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text)}.main{margin-left:235px;width:calc(100% - 235px);padding:34px;max-width:1250px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.eyebrow{color:var(--accent2);font-size:13px;font-weight:700}.top h1{margin:5px 0;font-size:30px}.date{color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}.stat,.card{background:rgba(18,21,29,.92);border:1px solid var(--border);border-radius:16px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:13px}.stat .num{font-size:28px;font-weight:800;margin-top:8px}.layout{display:grid;grid-template-columns:1.4fr .9fr;gap:18px;margin-top:18px}.card{padding:22px}.card h2{font-size:18px;margin:0 0 16px}.section-head{display:flex;justify-content:space-between;align-items:center}.pill{font-size:11px;padding:5px 8px;border-radius:999px;background:#241c35;color:var(--accent2)}.revision{padding:15px;background:var(--panel2);border:1px solid var(--border);border-radius:12px;margin:10px 0;display:flex;justify-content:space-between;gap:12px;align-items:center}.revision .subject{font-size:11px;color:var(--accent2);font-weight:700}.revision h3{margin:4px 0;font-size:15px}.revision p{margin:0;color:var(--muted);font-size:12px}.actions{display:flex;gap:7px}.btn{border:0;border-radius:9px;padding:9px 12px;cursor:pointer;font-weight:700}.primary{background:var(--accent);color:white}.ghost{background:#222734;color:#d9deea}.success{background:#12351f;color:#6ee7a0}.danger{background:#351619;color:#fca5a5}.form{display:grid;gap:11px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.field input,.field select{width:100%;padding:11px 12px;border-radius:9px;border:1px solid var(--border);background:#0e1118;color:var(--text);outline:none}.field input:focus,.field select:focus{border-color:var(--accent)}.empty{text-align:center;color:var(--muted);padding:28px 8px}.topic{padding:14px 0;border-bottom:1px solid var(--border)}.topic:last-child{border-bottom:0}.topic-top{display:flex;justify-content:space-between;gap:12px}.topic h3{margin:3px 0;font-size:15px}.topic small{color:var(--muted)}.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.badge{font-size:11px;padding:5px 7px;background:#202530;border-radius:7px;color:#b9c1cf}.badge.done{opacity:.45;text-decoration:line-through}.page{display:none}.page.active{display:block}.toast{position:fixed;right:20px;bottom:20px;background:#1b202b;border:1px solid var(--border);padding:13px 16px;border-radius:11px;display:none;box-shadow:0 12px 30px #0008}.mobile-nav{display:none}
+button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{width:235px;border-right:1px solid var(--border);padding:24px 16px;position:fixed;height:100vh;background:#0d1016}.brand{font-weight:800;font-size:20px;padding:8px 10px 28px}.brand span{color:var(--accent2)}.nav button{display:block;width:100%;background:none;border:0;color:var(--muted);text-align:left;padding:12px 13px;border-radius:10px;margin:4px 0;cursor:pointer}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text)}.main{margin-left:235px;width:calc(100% - 235px);padding:34px;max-width:1250px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.eyebrow{color:var(--accent2);font-size:13px;font-weight:700}.top h1{margin:5px 0;font-size:30px}.date{color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}.stat,.card{background:rgba(18,21,29,.92);border:1px solid var(--border);border-radius:16px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:13px}.stat .num{font-size:28px;font-weight:800;margin-top:8px}.layout{display:grid;grid-template-columns:1.4fr .9fr;gap:18px;margin-top:18px}.card{padding:22px}.card h2{font-size:18px;margin:0 0 16px}.section-head{display:flex;justify-content:space-between;align-items:center}.pill{font-size:11px;padding:5px 8px;border-radius:999px;background:#241c35;color:var(--accent2)}.revision{padding:15px;background:var(--panel2);border:1px solid var(--border);border-radius:12px;margin:10px 0;display:flex;justify-content:space-between;gap:12px;align-items:center}.revision .subject{font-size:11px;color:var(--accent2);font-weight:700}.revision h3{margin:4px 0;font-size:15px}.revision p{margin:0;color:var(--muted);font-size:12px}.actions{display:flex;gap:7px}.btn{border:0;border-radius:9px;padding:9px 12px;cursor:pointer;font-weight:700}.primary{background:var(--accent);color:white}.ghost{background:#222734;color:#d9deea}.success{background:#12351f;color:#6ee7a0}.danger{background:#351619;color:#fca5a5}.form{display:grid;gap:11px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.field input,.field select{width:100%;padding:11px 12px;border-radius:9px;border:1px solid var(--border);background:#0e1118;color:var(--text);outline:none}.field input:focus,.field select:focus{border-color:var(--accent)}.empty{text-align:center;color:var(--muted);padding:28px 8px}.topic{padding:14px 0;border-bottom:1px solid var(--border)}.topic:last-child{border-bottom:0}.topic-top{display:flex;justify-content:space-between;gap:12px}.topic h3{margin:3px 0;font-size:15px}.topic small{color:var(--muted)}.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.badge{font-size:11px;padding:5px 7px;background:#202530;border-radius:7px;color:#b9c1cf}.badge.done{opacity:.45;text-decoration:line-through}
+.todo-row{display:flex;align-items:center;gap:10px;padding:10px 2px;border-bottom:1px solid var(--border)}.todo-row:last-child{border-bottom:0}
+.todo-check{width:19px;height:19px;border-radius:6px;border:1.5px solid var(--border);background:transparent;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#6ee7a0;font-size:12px;padding:0}
+.todo-check.checked{background:#12351f;border-color:#1d5c37}
+.todo-text{flex:1;font-size:14px;word-break:break-word}
+.todo-text.done{color:var(--muted);text-decoration:line-through}
+.todo-del{background:none;border:0;color:var(--muted);cursor:pointer;font-size:15px;padding:4px 6px;flex-shrink:0}
+.todo-del:hover{color:#fca5a5}
+.todo-add{display:flex;gap:8px;margin-bottom:6px}
+.todo-add input{flex:1;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:#0e1118;color:var(--text);outline:none}
+.todo-add input:focus{border-color:var(--accent)}
+.page{display:none}.page.active{display:block}.toast{position:fixed;right:20px;bottom:20px;background:#1b202b;border:1px solid var(--border);padding:13px 16px;border-radius:11px;display:none;box-shadow:0 12px 30px #0008}.mobile-nav{display:none}
 @media(max-width:900px){.sidebar{display:none}.main{margin:0;width:100%;padding:20px}.grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.mobile-nav{display:flex;gap:6px;overflow:auto;margin-bottom:18px}.mobile-nav button{white-space:nowrap}.row{grid-template-columns:1fr}}
 @media(max-width:500px){.grid{grid-template-columns:1fr 1fr}.top h1{font-size:24px}.revision{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions button{flex:1}}
 
@@ -129,6 +140,14 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
   <div class="layout">
     <div class="card"><div class="section-head"><h2>🔔 Today's revisions</h2><span class="pill" id="duePill">0 due</span></div><div id="todayList"></div></div>
     <div class="card"><h2>⚡ Revision system</h2><p style="color:var(--muted);line-height:1.7;font-size:14px">Every study session automatically gets reviews after <b style="color:white">3, 7, 14, 30 and 60 days</b>. Mark each one done and keep moving.</p><div style="display:flex;gap:7px;flex-wrap:wrap"><span class="pill">3 days</span><span class="pill">1 week</span><span class="pill">2 weeks</span><span class="pill">1 month</span><span class="pill">2 months</span></div></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <div class="section-head"><h2>✅ To-do</h2><span class="pill" id="todoPill">0 left</span></div>
+    <form class="todo-add" id="todoForm">
+      <input id="todoInput" placeholder="Add a task…" autocomplete="off" required>
+      <button class="btn primary" type="submit">Add</button>
+    </form>
+    <div id="todoList"></div>
   </div>
   <div class="layout">
     <div class="card"><div class="section-head"><h2>📅 Upcoming revisions</h2></div><div id="upcomingList"></div></div>
@@ -574,7 +593,7 @@ function chapterPrefix(x){
 function clearAll(){if(confirm('Delete all your saved JEE revision data?')){data=[];save();render();toast('All data cleared')}}
 function render(){
  document.getElementById('todayText').textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
- renderDashboard();renderTopics();renderTargets();renderMistakes();renderTests();renderAnalytics();
+ renderDashboard();renderTopics();renderTargets();renderMistakes();renderTests();renderAnalytics();renderTodos();
 }
 
 let timerMode='focus', focusMinutes=60, remaining=3600, timerId=null;
@@ -1041,6 +1060,38 @@ if(!Array.isArray(tests))tests=[];
 let testFilter='all';
 function saveTests(){localStorage.setItem('jeeTests',JSON.stringify(tests))}
 document.getElementById('testDate').value=todayKey();
+
+/* ===== Dashboard To-do ===== */
+let todos=safeParse('jeeTodos',[]);
+if(!Array.isArray(todos))todos=[];
+function saveTodos(){localStorage.setItem('jeeTodos',JSON.stringify(todos))}
+function renderTodos(){
+ const list=document.getElementById('todoList');
+ const pill=document.getElementById('todoPill');
+ if(!list)return;
+ const left=todos.filter(t=>!t.done).length;
+ if(pill)pill.textContent=left+' left';
+ list.innerHTML=!todos.length
+   ?'<div class="empty">No tasks yet. Add something above.</div>'
+   :todos.map(t=>`<div class="todo-row">
+      <button class="todo-check${t.done?' checked':''}" onclick="toggleTodo(${t.id})">${t.done?'✓':''}</button>
+      <span class="todo-text${t.done?' done':''}">${esc(t.text)}</span>
+      <button class="todo-del" onclick="deleteTodo(${t.id})" title="Delete">✕</button>
+    </div>`).join('');
+}
+function toggleTodo(id){const t=todos.find(x=>x.id===id);if(t){t.done=!t.done;saveTodos();renderTodos()}}
+function deleteTodo(id){todos=todos.filter(x=>x.id!==id);saveTodos();renderTodos()}
+const todoFormEl=document.getElementById('todoForm');
+if(todoFormEl)todoFormEl.addEventListener('submit',e=>{
+ e.preventDefault();
+ const input=document.getElementById('todoInput');
+ const text=input.value.trim();
+ if(!text)return;
+ todos.push({id:Date.now(),text,done:false});
+ saveTodos();
+ input.value='';
+ renderTodos();
+});
 document.getElementById('testForm').addEventListener('submit', function(e){
   e.preventDefault();
 
@@ -1093,7 +1144,7 @@ function deleteTest(id){tests=tests.filter(x=>x.id!==id);saveTests();renderTests
 function clearTests(){if(confirm('Delete all test results?')){tests=[];saveTests();renderTests();toast('Test history cleared')}}
 
 /* ===== Settings / Backup ===== */
-const ALL_STORAGE_KEYS=['jeeRevisionData','jeeStudyTimeLog','jeeTimerStateV2','pomodoroSessions','jeeDailyTargets','jeeMistakes','jeeTests'];
+const ALL_STORAGE_KEYS=['jeeRevisionData','jeeStudyTimeLog','jeeTimerStateV2','pomodoroSessions','jeeDailyTargets','jeeMistakes','jeeTests','jeeTodos'];
 
 function exportData(){
   const bundle={exportedAt:new Date().toISOString(),version:2,data:{}};

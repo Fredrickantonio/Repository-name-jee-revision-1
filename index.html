@@ -1000,10 +1000,12 @@ function renderTargets(){
     const e=document.getElementById('target'+k);
     if(e)e.value=targets[k.toLowerCase()]||0;
   });
-  const qp=data.filter(x=>x.studied===todayKey()).reduce((a,x)=>{
-    if(x.subject==='Physics')a.phy+=x.questions;
-    if(x.subject==='Chemistry')a.chem+=x.questions;
-    if(x.subject==='Maths')a.maths+=x.questions;
+  const qp=data.reduce((a,x)=>{
+    const todaySession=(Array.isArray(x.sessions)?x.sessions:[]).find(s=>s.date===todayKey());
+    if(!todaySession)return a;
+    if(x.subject==='Physics')a.phy+=todaySession.questions;
+    if(x.subject==='Chemistry')a.chem+=todaySession.questions;
+    if(x.subject==='Maths')a.maths+=todaySession.questions;
     return a;
   },{phy:0,chem:0,maths:0});
   const studySec=secondsForDate(todayKey());

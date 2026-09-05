@@ -11,17 +11,24 @@
   --green:#22c55e;--red:#ef4444;--yellow:#f59e0b;--blue:#38bdf8;
 }
 *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 80% 0%,#24163f 0,transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
-button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{width:235px;border-right:1px solid var(--border);padding:24px 16px;position:fixed;height:100vh;background:#0d1016}.brand{font-weight:800;font-size:20px;padding:8px 10px 28px}.brand span{color:var(--accent2)}.nav button{display:block;width:100%;background:none;border:0;color:var(--muted);text-align:left;padding:12px 13px;border-radius:10px;margin:4px 0;cursor:pointer}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text)}.main{margin-left:235px;width:calc(100% - 235px);padding:34px;max-width:1250px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.eyebrow{color:var(--accent2);font-size:13px;font-weight:700}.top h1{margin:5px 0;font-size:30px}.date{color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}.stat,.card{background:rgba(18,21,29,.92);border:1px solid var(--border);border-radius:16px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:13px}.stat .num{font-size:28px;font-weight:800;margin-top:8px}.layout{display:grid;grid-template-columns:1.4fr .9fr;gap:18px;margin-top:18px}.card{padding:22px}.card h2{font-size:18px;margin:0 0 16px}.section-head{display:flex;justify-content:space-between;align-items:center}.pill{font-size:11px;padding:5px 8px;border-radius:999px;background:#241c35;color:var(--accent2)}.revision{padding:15px;background:var(--panel2);border:1px solid var(--border);border-radius:12px;margin:10px 0;display:flex;justify-content:space-between;gap:12px;align-items:center}.revision .subject{font-size:11px;color:var(--accent2);font-weight:700}.revision h3{margin:4px 0;font-size:15px}.revision p{margin:0;color:var(--muted);font-size:12px}.actions{display:flex;gap:7px}.btn{border:0;border-radius:9px;padding:9px 12px;cursor:pointer;font-weight:700}.primary{background:var(--accent);color:white}.ghost{background:#222734;color:#d9deea}.success{background:#12351f;color:#6ee7a0}.danger{background:#351619;color:#fca5a5}.form{display:grid;gap:11px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.field input,.field select{width:100%;padding:11px 12px;border-radius:9px;border:1px solid var(--border);background:#0e1118;color:var(--text);outline:none}.field input:focus,.field select:focus{border-color:var(--accent)}.empty{text-align:center;color:var(--muted);padding:28px 8px}.topic{padding:14px 0;border-bottom:1px solid var(--border)}.topic:last-child{border-bottom:0}.topic-top{display:flex;justify-content:space-between;gap:12px}.topic h3{margin:3px 0;font-size:15px}.topic small{color:var(--muted)}.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.badge{font-size:11px;padding:5px 7px;background:#202530;border-radius:7px;color:#b9c1cf}.badge.done{opacity:.45;text-decoration:line-through}
-.todo-row{display:flex;align-items:center;gap:10px;padding:10px 2px;border-bottom:1px solid var(--border)}.todo-row:last-child{border-bottom:0}
-.todo-check{width:19px;height:19px;border-radius:6px;border:1.5px solid var(--border);background:transparent;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#6ee7a0;font-size:12px;padding:0}
-.todo-check.checked{background:#12351f;border-color:#1d5c37}
-.todo-text{flex:1;font-size:14px;word-break:break-word}
-.todo-text.done{color:var(--muted);text-decoration:line-through}
+button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{width:235px;border-right:1px solid var(--border);padding:24px 16px;position:fixed;height:100vh;background:#0d1016}.brand{font-weight:800;font-size:20px;padding:8px 10px 28px}.brand span{color:var(--accent2)}.nav button{display:block;width:100%;background:none;border:0;color:var(--muted);text-align:left;padding:12px 13px;border-radius:10px;margin:4px 0;cursor:pointer}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text)}.main{margin-left:235px;width:calc(100% - 235px);padding:34px;max-width:1250px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.eyebrow{color:var(--accent2);font-size:13px;font-weight:700}.top h1{margin:5px 0;font-size:30px}.date{color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}.stat,.card{background:rgba(18,21,29,.92);border:1px solid var(--border);border-radius:16px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:13px}.stat .num{font-size:28px;font-weight:800;margin-top:8px}.layout{display:grid;grid-template-columns:1.4fr .9fr;gap:18px;margin-top:18px}.card{padding:22px}.card h2{font-size:18px;margin:0 0 16px}.section-head{display:flex;justify-content:space-between;align-items:center}.pill{font-size:11px;padding:5px 8px;border-radius:999px;background:#241c35;color:var(--accent2)}.revision{padding:15px 16px 15px 18px;background:var(--panel2);border:1px solid var(--border);border-left:4px solid #8b5cf6;border-radius:12px;margin:10px 0;display:flex;justify-content:space-between;gap:12px;align-items:center;transition:transform .15s ease,box-shadow .15s ease}.revision:hover{transform:translateY(-2px);box-shadow:0 10px 22px #0007}.revision.chemistry{border-left-color:#f59e0b}.revision.maths{border-left-color:#22c55e}.revision.overdue{background:linear-gradient(135deg,#241019,#1a1420)}.revision .subject{font-size:11px;color:var(--accent2);font-weight:700;display:flex;align-items:center;gap:7px;flex-wrap:wrap}.revision h3{margin:6px 0 2px;font-size:16px;font-weight:800}.revision p{margin:0;color:var(--muted);font-size:12px}.urgency-badge{font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;letter-spacing:.2px}.urgency-badge.today{background:#241c35;color:#c4b5fd}.urgency-badge.overdue{background:#3a1720;color:#fca5a5;animation:pulseBadge 1.7s ease-in-out infinite}@keyframes pulseBadge{0%,100%{opacity:1}50%{opacity:.5}}.done-btn{border:0;border-radius:999px;padding:11px 18px;cursor:pointer;font-weight:800;background:linear-gradient(135deg,#22c55e,#16a34a);color:#04170a;font-size:13px;transition:transform .12s ease;white-space:nowrap}.done-btn:hover{transform:scale(1.06)}.done-btn:active{transform:scale(.94)}.streak-banner{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#241c35,#1a1428);border:1px solid #3a2f5c;border-radius:12px;padding:12px 16px;margin-bottom:14px;font-size:13.5px;color:#e6dcff;font-weight:600}.actions{display:flex;gap:7px}.btn{border:0;border-radius:9px;padding:9px 12px;cursor:pointer;font-weight:700}.primary{background:var(--accent);color:white}.ghost{background:#222734;color:#d9deea}.success{background:#12351f;color:#6ee7a0}.danger{background:#351619;color:#fca5a5}.form{display:grid;gap:11px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.field input,.field select{width:100%;padding:11px 12px;border-radius:9px;border:1px solid var(--border);background:#0e1118;color:var(--text);outline:none}.field input:focus,.field select:focus{border-color:var(--accent)}.empty{text-align:center;color:var(--muted);padding:28px 8px}.topic{padding:14px 0;border-bottom:1px solid var(--border)}.topic:last-child{border-bottom:0}.topic-top{display:flex;justify-content:space-between;gap:12px}.topic h3{margin:3px 0;font-size:15px}.topic small{color:var(--muted)}.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.badge{font-size:11px;padding:5px 7px;background:#202530;border-radius:7px;color:#b9c1cf}.badge.overdue-badge{background:#3a1720;color:#fca5a5;font-weight:700}.badge.today-badge{background:#241c35;color:#c4b5fd;font-weight:700}.badge.done{opacity:.5;text-decoration:line-through}
+.modal-overlay{position:fixed;inset:0;background:rgba(6,8,13,.72);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal-box{background:#12151d;border:1px solid var(--border);border-radius:16px;padding:22px;width:100%;max-width:480px;box-shadow:0 20px 50px #000a;max-height:88vh;overflow-y:auto}
+.modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px}
+.modal-head h3{margin:0;font-size:17px}
+.modal-close{background:none;border:0;color:var(--muted);font-size:16px;cursor:pointer;padding:2px 6px}
+.modal-meta{color:var(--muted);font-size:12.5px;margin:2px 0 16px;line-height:1.5}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.sched-row{display:grid;grid-template-columns:96px 96px 108px 1fr 30px;gap:6px;margin-bottom:8px;align-items:center}
+.sched-row input,.sched-row select{padding:8px 9px;border-radius:8px;border:1px solid var(--border);background:#0e1118;color:var(--text);font-size:12.5px;width:100%;outline:none}
+.sched-row input:focus,.sched-row select:focus{border-color:var(--accent)}
+@media(max-width:560px){.sched-row{grid-template-columns:1fr 1fr;grid-template-areas:"start end" "subject subject" "label del"}.sched-row input:nth-child(1){grid-area:start}.sched-row input:nth-child(2){grid-area:end}.sched-row select{grid-area:subject}.sched-row input:nth-child(4){grid-area:label}.sched-row button{grid-area:del}}
+.timer-task-active{background:#1b1530;border:1px solid #3a2f5c;color:#c4b5fd;border-radius:10px;padding:9px 12px;font-size:13px;text-align:center;margin-bottom:14px;display:none}
+.timer-task-pick{margin-bottom:14px}
+.timer-task-pick select{width:100%;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:#0e1118;color:var(--text);font-size:13px;outline:none}
+.timer-task-pick select:focus{border-color:var(--accent)}
 .todo-del{background:none;border:0;color:var(--muted);cursor:pointer;font-size:15px;padding:4px 6px;flex-shrink:0}
 .todo-del:hover{color:#fca5a5}
-.todo-add{display:flex;gap:8px;margin-bottom:6px}
-.todo-add input{flex:1;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:#0e1118;color:var(--text);outline:none}
-.todo-add input:focus{border-color:var(--accent)}
 .page{display:none}.page.active{display:block}.toast{position:fixed;right:20px;bottom:20px;background:#1b202b;border:1px solid var(--border);padding:13px 16px;border-radius:11px;display:none;box-shadow:0 12px 30px #0008}.mobile-nav{display:none}
 @media(max-width:900px){.sidebar{display:none}.main{margin:0;width:100%;padding:20px}.grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.mobile-nav{display:flex;gap:6px;overflow:auto;margin-bottom:18px}.mobile-nav button{white-space:nowrap}.row{grid-template-columns:1fr}}
 @media(max-width:500px){.grid{grid-template-columns:1fr 1fr}.top h1{font-size:24px}.revision{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions button{flex:1}}
@@ -72,7 +79,7 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
 @keyframes pulseRun{50%{opacity:.45;transform:scale(.8)}}
 @media(max-width:650px){.subject-summary{grid-template-columns:1fr}.bar-chart{gap:5px}.bar-label{font-size:9px}.analytics-tabs{width:100%}.analytics-tab{flex:1;padding:8px 6px}}
 
-/* JEE planning / mistake / test tracker */
+/* JEE planning / test tracker */
 .target-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .target-card{background:var(--panel2);border:1px solid var(--border);border-radius:13px;padding:15px}
 .target-card label{display:block;color:var(--muted);font-size:11px;font-weight:700;margin-bottom:7px}
@@ -81,7 +88,7 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
 .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.full{grid-column:1/-1}
 .table-wrap{overflow:auto}.data-table{width:100%;border-collapse:collapse;min-width:700px}.data-table th,.data-table td{text-align:left;padding:12px;border-bottom:1px solid var(--border);font-size:13px}.data-table th{color:var(--muted);font-size:11px;text-transform:uppercase}.score{font-weight:800}.trend-up{color:#6ee7a0}.trend-down{color:#fca5a5}
 .filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.filter-row select,.filter-row input{padding:9px 11px;border-radius:8px;border:1px solid var(--border);background:#0e1118;color:var(--text)}
-.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-stat{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:15px}.mini-stat b{font-size:23px;display:block;margin-top:5px}.mistake-card{padding:15px;background:var(--panel2);border:1px solid var(--border);border-radius:12px;margin:9px 0}.mistake-meta{color:var(--muted);font-size:11px}.mistake-card h3{font-size:14px;margin:5px 0}.reason{display:inline-block;padding:4px 7px;border-radius:6px;background:#2a2039;color:#c4b5fd;font-size:10px;margin-top:7px}
+.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-stat{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:15px}.mini-stat b{font-size:23px;display:block;margin-top:5px}
 @media(max-width:800px){.target-grid{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -95,7 +102,6 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
     <button onclick="showPage('topics',this)">▣ &nbsp; All Topics</button>
     <button onclick="showPage('timer',this)">◷ &nbsp; Pomodoro Timer</button>
     <button onclick="showPage('analytics',this)">▥ &nbsp; Study Analytics</button>
-    <button onclick="showPage('mistakes',this)">✕ &nbsp; Mistake Bank</button>
     <button onclick="showPage('tests',this)">▤ &nbsp; Test Tracker</button>
     <button onclick="showPage('settings',this)">⚙ &nbsp; Settings & Backup</button>
   </nav>
@@ -108,7 +114,6 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
   <button class="btn ghost" onclick="showPage('topics')">Topics</button>
   <button class="btn ghost" onclick="showPage('timer')">Timer</button>
 <button class="btn ghost" onclick="showPage('analytics')">Analytics</button>
-<button class="btn ghost" onclick="showPage('mistakes')">Mistakes</button>
 <button class="btn ghost" onclick="showPage('tests')">Tests</button>
 <button class="btn ghost" onclick="showPage('settings')">Settings</button>
 </div>
@@ -146,12 +151,8 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
     <div class="card"><h2>⚡ Revision system</h2><p style="color:var(--muted);line-height:1.7;font-size:14px">Every study session automatically gets reviews after <b style="color:white">3, 7, 14, 30 and 60 days</b>. Mark each one done and keep moving.</p><div style="display:flex;gap:7px;flex-wrap:wrap"><span class="pill">3 days</span><span class="pill">1 week</span><span class="pill">2 weeks</span><span class="pill">1 month</span><span class="pill">2 months</span></div></div>
   </div>
   <div class="card" style="margin-top:18px">
-    <div class="section-head"><h2>✅ To-do</h2><span class="pill" id="todoPill">0 left</span></div>
-    <form class="todo-add" id="todoForm">
-      <input id="todoInput" placeholder="Add a task…" autocomplete="off" required>
-      <button class="btn primary" type="submit">Add</button>
-    </form>
-    <div id="todoList"></div>
+    <div class="section-head"><h2>📅 Today's Schedule</h2><button class="btn ghost" onclick="openScheduleModal()" style="padding:6px 12px;font-size:12px">✏ Edit</button></div>
+    <div id="scheduleList"></div>
   </div>
   <div class="layout">
     <div class="card"><div class="section-head"><h2>📅 Upcoming revisions</h2></div><div id="upcomingList"></div></div>
@@ -193,40 +194,6 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
 
 
 
-
-<section id="mistakes" class="page">
-  <div class="top">
-    <div><div class="eyebrow">LEARN FROM EVERY WRONG QUESTION</div><h1>Mistake Bank</h1><div class="date">Record the reason, fix it, and revisit your weak points.</div></div>
-    <button class="btn primary" onclick="document.getElementById('mistakeFormCard').scrollIntoView({behavior:'smooth'})">＋ Add Mistake</button>
-  </div>
-
-  <div class="mini-grid">
-    <div class="mini-stat"><span class="date">TOTAL MISTAKES</span><b id="mistakeTotal">0</b></div>
-    <div class="mini-stat"><span class="date">TO REVISIT</span><b id="mistakeOpen">0</b></div>
-    <div class="mini-stat"><span class="date">FIXED</span><b id="mistakeFixed">0</b></div>
-  </div>
-
-  <div class="card" id="mistakeFormCard" style="margin-top:18px">
-    <h2>Add a mistake</h2>
-    <form id="mistakeForm" class="form-grid">
-      <div class="field"><label>Subject</label><select id="mistakeSubject" required><option>Physics</option><option>Chemistry</option><option>Maths</option></select></div>
-      <div class="field"><label>Chapter</label><input id="mistakeChapter" placeholder="e.g. Electrostatics" required></div>
-      <div class="field full"><label>Question / what went wrong?</label><input id="mistakeQuestion" placeholder="e.g. Used wrong sign convention in potential" required></div>
-      <div class="field"><label>Reason</label><select id="mistakeReason"><option>Concept gap</option><option>Calculation</option><option>Silly mistake</option><option>Didn't know approach</option><option>Time pressure</option></select></div>
-      <div class="field"><label>Fix / takeaway</label><input id="mistakeFix" placeholder="Write the rule or idea to remember"></div>
-      <button class="btn primary full" type="submit">Save mistake →</button>
-    </form>
-  </div>
-
-  <div class="card" style="margin-top:18px">
-    <div class="section-head"><h2>Recent mistakes</h2><span class="pill" id="mistakeFilterCount">0</span></div>
-    <div class="filter-row">
-      <select id="mistakeFilterSubject" onchange="renderMistakes()"><option value="">All subjects</option><option>Physics</option><option>Chemistry</option><option>Maths</option></select>
-      <select id="mistakeFilterStatus" onchange="renderMistakes()"><option value="">All</option><option value="open">To revisit</option><option value="fixed">Fixed</option></select>
-    </div>
-    <div id="mistakeList"></div>
-  </div>
-</section>
 
 <section id="tests" class="page">
   <div class="top">
@@ -312,6 +279,10 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
   </div>
   <div class="timer-wrap">
     <div class="card timer-card">
+      <div class="timer-task-active" id="timerTaskActive"></div>
+      <div class="timer-task-pick">
+        <select id="timerTaskSelect" onchange="selectTimerTask()"><option value="">No task selected — pick from today's schedule</option></select>
+      </div>
       <div class="timer-subject">
         <select id="timerSubject" aria-label="Subject">
           <option>Physics</option><option>Chemistry</option><option>Maths</option>
@@ -348,7 +319,7 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
 
   <div class="card">
     <h2>💾 Export / Import</h2>
-    <p style="color:var(--muted);font-size:14px;line-height:1.6">Export saves every lesson, revision, test, mistake, target and study-time record as one JSON file. Import restores from that file — it fully replaces current data, so export first if unsure.</p>
+    <p style="color:var(--muted);font-size:14px;line-height:1.6">Export saves every lesson, revision, test, target and study-time record as one JSON file. Import restores from that file — it fully replaces current data, so export first if unsure.</p>
     <div class="actions" style="margin-top:12px">
       <button class="btn primary" onclick="exportData()">⬇ Export Data (JSON)</button>
       <button class="btn ghost" onclick="document.getElementById('importFile').click()">⬆ Import Data</button>
@@ -370,7 +341,7 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
 
   <div class="card" style="margin-top:18px;border-color:#4a1d22">
     <h2 style="color:#fca5a5">⚠ Danger zone</h2>
-    <p style="color:var(--muted);font-size:14px;line-height:1.6">This permanently deletes lessons, revisions, tests, mistakes, targets, study-time history and the timer — everything this app has stored in this browser. This cannot be undone. Export a backup first.</p>
+    <p style="color:var(--muted);font-size:14px;line-height:1.6">This permanently deletes lessons, revisions, tests, targets, study-time history and the timer — everything this app has stored in this browser. This cannot be undone. Export a backup first.</p>
     <button class="btn danger" onclick="resetEverything()">🗑 Reset Everything</button>
   </div>
 </section>
@@ -379,6 +350,19 @@ button,input,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{wid
 </div>
 <div class="toast" id="toast"></div>
 <div class="chart-tooltip" id="chartTooltip"></div>
+
+<div class="modal-overlay" id="scheduleModal">
+  <div class="modal-box">
+    <div class="modal-head"><h3>📅 Plan today's schedule</h3><button class="modal-close" onclick="closeScheduleModal()">✕</button></div>
+    <div class="modal-meta">Block out today's time slots — e.g. 9:00–10:00 Physics, 10:00–11:00 Chemistry. You can edit this anytime from the Dashboard.</div>
+    <div id="scheduleRows"></div>
+    <button type="button" class="btn ghost" style="width:100%;margin:6px 0 4px" onclick="addScheduleRow()">+ Add time slot</button>
+    <div class="modal-actions">
+      <button class="btn ghost" onclick="skipScheduleToday()">Skip for today</button>
+      <button class="btn primary" onclick="saveScheduleModal()">✓ Save schedule</button>
+    </div>
+  </div>
+</div>
 
 <script>
 // Defensive JSON load: if a localStorage value is missing OR corrupted,
@@ -547,20 +531,35 @@ function renderDashboard(){
  document.getElementById('topicStat').textContent=data.length;
  document.getElementById('doneStat').textContent=done;
  document.getElementById('qStat').textContent=q;
- document.getElementById('streakStat').textContent=calcCurrentStreak();
+ const streak=calcCurrentStreak();
+ document.getElementById('streakStat').textContent=streak;
  document.getElementById('todayTimeStat').textContent=fmtTime(secondsForDate(todayKey()));
 
  let box=document.getElementById('todayList');
- box.innerHTML=!d.length
-   ?'<div class="empty">Nothing due today. Nice work 🎉</div>'
-   :d.map(({x,r})=>`<div class="revision"><div><div class="subject">${x.subject.toUpperCase()} • REVISION ${r.n}</div><h3>${esc(x.topic)}</h3><p>${chapterPrefix(x)}scheduled ${nice(r.date)}</p></div><div class="actions"><button class="btn success" onclick="complete(${x.id},${r.n})">✓ Done</button></div></div>`).join('');
+ if(!d.length){
+   box.innerHTML='<div class="empty">Nothing due today. Nice work 🎉</div>';
+ }else{
+   const t=todayKey();
+   const overdueCount=d.filter(({r})=>r.date<t).length;
+   const banner = overdueCount
+     ? `<div class="streak-banner">⚠️ <b>${overdueCount} overdue</b> — clear ${overdueCount>1?'these':'this'} first before they pile up!</div>`
+     : streak>0
+       ? `<div class="streak-banner">🔥 <b>${streak}-day streak</b> — finish ${d.length>1?`these ${d.length}`:'this'} to keep it alive!</div>`
+       : `<div class="streak-banner">💪 ${d.length} revision${d.length>1?'s':''} due — knock ${d.length>1?'them':'it'} out and start your streak!</div>`;
+   box.innerHTML=banner+d.map(({x,r})=>{
+     const cls=subjectClass(x.subject);
+     const overdue=r.date<t;
+     const urgency=overdue?'<span class="urgency-badge overdue">OVERDUE</span>':'<span class="urgency-badge today">DUE TODAY</span>';
+     return `<div class="revision ${cls}${overdue?' overdue':''}"><div><div class="subject">${x.subject.toUpperCase()} • REVISION ${r.n} ${urgency}</div><h3>${esc(x.topic)}</h3><p>${chapterPrefix(x)}scheduled ${nice(r.date)}</p></div><div class="actions"><button class="done-btn" onclick="complete(${x.id},${r.n})">✓ Done</button></div></div>`;
+   }).join('');
+ }
 
  const ubox=document.getElementById('upcomingList');
  if(ubox){
    const u=upcoming();
    ubox.innerHTML=!u.length
      ?'<div class="empty">No upcoming revisions scheduled.</div>'
-     :u.map(({x,r})=>`<div class="revision"><div><div class="subject">${x.subject.toUpperCase()} • REVISION ${r.n}</div><h3>${esc(x.topic)}</h3><p>${chapterPrefix(x)}${nice(r.date)}</p></div></div>`).join('');
+     :u.map(({x,r})=>`<div class="revision ${subjectClass(x.subject)}"><div><div class="subject">${x.subject.toUpperCase()} • REVISION ${r.n}</div><h3>${esc(x.topic)}</h3><p>${chapterPrefix(x)}${nice(r.date)}</p></div></div>`).join('');
  }
 
  const tbox=document.getElementById('recentTestsList');
@@ -576,16 +575,26 @@ function renderDashboard(){
  if(dc)dc.textContent=fmtTime(secondsForDate(todayKey(),'Chemistry'));
  if(dm)dm.textContent=fmtTime(secondsForDate(todayKey(),'Maths'));
 }
+function subjectClass(subject){
+ return subject==='Chemistry'?'chemistry':subject==='Maths'?'maths':'';
+}
 
 function renderTopics(){
  let box=document.getElementById('allTopics');
  if(!data.length){box.innerHTML='<div class="empty">No study sessions yet. Add your first topic.</div>';return}
+ const t=todayKey();
  box.innerHTML=data.map(x=>{
    const sessions=Array.isArray(x.sessions)?x.sessions:[];
    const practiceNote=sessions.length>1
      ? `Practiced ${sessions.length} days (${nice(sessions[0].date)} → ${nice(sessions[sessions.length-1].date)})`
      : `${nice(x.studied)}`;
-   return `<div class="topic"><div class="topic-top"><div><div class="eyebrow">${x.subject}</div><h3>${esc(x.topic)}</h3><small>${chapterPrefix(x)}${practiceNote} • ${x.questions} questions total</small></div></div><div class="badges">${x.revisions.map(r=>`<span class="badge ${r.done?'done':''}">R${r.n} · ${nice(r.date)}${r.done?' ✓':''}</span>`).join('')}</div></div>`;
+   const badges=x.revisions.map(r=>{
+     if(r.done)return `<span class="badge done">R${r.n} · ${nice(r.date)} ✓</span>`;
+     if(r.date<t)return `<span class="badge overdue-badge">R${r.n} · ${nice(r.date)} ⚠</span>`;
+     if(r.date===t)return `<span class="badge today-badge">R${r.n} · Today 🔥</span>`;
+     return `<span class="badge">R${r.n} · ${nice(r.date)}</span>`;
+   }).join('');
+   return `<div class="topic"><div class="topic-top"><div><div class="eyebrow">${x.subject}</div><h3>${esc(x.topic)}</h3><small>${chapterPrefix(x)}${practiceNote} • ${x.questions} questions total</small></div></div><div class="badges">${badges}</div></div>`;
  }).join('');
 }
 
@@ -597,7 +606,7 @@ function chapterPrefix(x){
 function clearAll(){if(confirm('Delete all your saved JEE revision data?')){data=[];save();render();toast('All data cleared')}}
 function render(){
  document.getElementById('todayText').textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
- renderDashboard();renderTopics();renderTargets();renderMistakes();renderTests();renderAnalytics();renderTodos();
+ renderDashboard();renderTopics();renderTargets();renderTests();renderAnalytics();renderDashboardSchedule();populateTimerTaskSelect();
 }
 
 let timerMode='focus', focusMinutes=60, remaining=3600, timerId=null;
@@ -610,6 +619,7 @@ if(!studyLog||typeof studyLog!=='object'||Array.isArray(studyLog))studyLog={};
 let timerEndAt=null;
 let timerSegmentStart=null;
 let timerSegmentLogged=0;
+let timerTask=null;
 const TIMER_STATE_KEY='jeeTimerStateV2';
 const LEGACY_FOCUS_HOURS=484;
 const LEGACY_ACCESS_DAYS=136;
@@ -618,7 +628,8 @@ const LEGACY_STREAK=28;
 function saveTimerState(){
   localStorage.setItem(TIMER_STATE_KEY,JSON.stringify({
     mode:timerMode, focusMinutes, remaining, endAt:timerEndAt,
-    running:!!timerId, segmentStart:timerSegmentStart, segmentLogged:timerSegmentLogged
+    running:!!timerId, segmentStart:timerSegmentStart, segmentLogged:timerSegmentLogged,
+    task:timerTask, taskDate:todayKey()
   }));
 }
 function loadTimerState(){
@@ -631,6 +642,7 @@ function loadTimerState(){
     timerEndAt=s.endAt?Number(s.endAt):null;
     timerSegmentStart=s.segmentStart?Number(s.segmentStart):null;
     timerSegmentLogged=Number(s.segmentLogged)||0;
+    timerTask=(s.task&&s.taskDate===todayKey())?s.task:null;
 
     if(s.running && timerEndAt){
       remaining=Math.max(0,(timerEndAt-Date.now())/1000);
@@ -860,6 +872,7 @@ window.addEventListener('beforeunload',function(){
 });
 
 loadTimerState();
+renderTimerTaskDisplay();
 function setAnalyticsRange(range,el){
   analyticsRange=range;
   document.querySelectorAll('.analytics-tab').forEach(x=>x.classList.remove('active'));
@@ -1026,40 +1039,6 @@ function renderTargets(){
   if(tt)tt.textContent=`Physics ${qp.phy}/${targets.phy||'—'} Q • Chemistry ${qp.chem}/${targets.chem||'—'} Q • Maths ${qp.maths}/${targets.maths||'—'} Q • Time ${fmtTime(studySec)}/${targets.hours?targets.hours+'h':'—'}`;
 }
 
-/* ===== Mistakes ===== */
-let mistakes=safeParse('jeeMistakes',[]);
-if(!Array.isArray(mistakes))mistakes=[];
-function saveMistakes(){localStorage.setItem('jeeMistakes',JSON.stringify(mistakes))}
-document.getElementById('mistakeForm').onsubmit=e=>{
-  e.preventDefault();
-  mistakes.unshift({id:Date.now(),date:todayKey(),subject:mistakeSubject.value,chapter:mistakeChapter.value.trim(),question:mistakeQuestion.value.trim(),reason:mistakeReason.value,fix:mistakeFix.value.trim(),fixed:false});
-  saveMistakes();e.target.reset();toast('Mistake saved — revisit it later ✓');renderMistakes();
-};
-function toggleMistake(id){
-  const x=mistakes.find(m=>m.id===id);if(x)x.fixed=!x.fixed;saveMistakes();renderMistakes();
-}
-function deleteMistake(id){mistakes=mistakes.filter(x=>x.id!==id);saveMistakes();renderMistakes()}
-function renderMistakes(){
-  const sf=document.getElementById('mistakeFilterSubject')?.value||'',st=document.getElementById('mistakeFilterStatus')?.value||'';
-  const list=mistakes.filter(x=>(!sf||x.subject===sf)&&(!st||(st==='fixed'?x.fixed:!x.fixed)));
-  document.getElementById('mistakeTotal').textContent=mistakes.length;
-  document.getElementById('mistakeOpen').textContent=mistakes.filter(x=>!x.fixed).length;
-  document.getElementById('mistakeFixed').textContent=mistakes.filter(x=>x.fixed).length;
-  document.getElementById('mistakeFilterCount').textContent=list.length;
-  const box=document.getElementById('mistakeList');
-  if(!list.length){box.innerHTML='<div class="empty">No mistakes here. Keep solving. 💪</div>';return}
-  box.innerHTML=list.map(x=>`<div class="mistake-card" style="${x.fixed?'opacity:.58':''}">
-    <div class="mistake-meta">${x.subject} • ${esc(x.chapter)} • ${nice(x.date)}</div>
-    <h3>${esc(x.question)}</h3>
-    <span class="reason">${esc(x.reason)}</span>
-    ${x.fix?`<p style="color:var(--muted);font-size:12px;margin:10px 0 0"><b style="color:white">Fix:</b> ${esc(x.fix)}</p>`:''}
-    <div class="actions" style="margin-top:10px">
-      <button class="btn ${x.fixed?'ghost':'success'}" onclick="toggleMistake(${x.id})">${x.fixed?'↩ Reopen':'✓ Fixed'}</button>
-      <button class="btn danger" onclick="deleteMistake(${x.id})">Delete</button>
-    </div>
-  </div>`).join('');
-}
-
 /* ===== Tests ===== */
 let tests=safeParse('jeeTests',[]);
 if(!Array.isArray(tests))tests=[];
@@ -1067,37 +1046,129 @@ let testFilter='all';
 function saveTests(){localStorage.setItem('jeeTests',JSON.stringify(tests))}
 document.getElementById('testDate').value=todayKey();
 
-/* ===== Dashboard To-do ===== */
-let todos=safeParse('jeeTodos',[]);
-if(!Array.isArray(todos))todos=[];
-function saveTodos(){localStorage.setItem('jeeTodos',JSON.stringify(todos))}
-function renderTodos(){
- const list=document.getElementById('todoList');
- const pill=document.getElementById('todoPill');
- if(!list)return;
- const left=todos.filter(t=>!t.done).length;
- if(pill)pill.textContent=left+' left';
- list.innerHTML=!todos.length
-   ?'<div class="empty">No tasks yet. Add something above.</div>'
-   :todos.map(t=>`<div class="todo-row">
-      <button class="todo-check${t.done?' checked':''}" onclick="toggleTodo(${t.id})">${t.done?'✓':''}</button>
-      <span class="todo-text${t.done?' done':''}">${esc(t.text)}</span>
-      <button class="todo-del" onclick="deleteTodo(${t.id})" title="Delete">✕</button>
-    </div>`).join('');
+/* ===== Daily Schedule Planner ===== */
+let schedule=safeParse('jeeSchedule',{});
+if(!schedule||typeof schedule!=='object'||Array.isArray(schedule))schedule={};
+let scheduleDraft=[];
+function saveSchedule(){localStorage.setItem('jeeSchedule',JSON.stringify(schedule))}
+function todaysSlots(){
+ const t=todayKey();
+ return Array.isArray(schedule[t])?schedule[t].slice().sort((a,b)=>String(a.start||'').localeCompare(String(b.start||''))):[];
 }
-function toggleTodo(id){const t=todos.find(x=>x.id===id);if(t){t.done=!t.done;saveTodos();renderTodos()}}
-function deleteTodo(id){todos=todos.filter(x=>x.id!==id);saveTodos();renderTodos()}
-const todoFormEl=document.getElementById('todoForm');
-if(todoFormEl)todoFormEl.addEventListener('submit',e=>{
- e.preventDefault();
- const input=document.getElementById('todoInput');
- const text=input.value.trim();
- if(!text)return;
- todos.push({id:Date.now(),text,done:false});
- saveTodos();
- input.value='';
- renderTodos();
+
+function scheduleRowHTML(slot){
+ const subjects=['Physics','Chemistry','Maths','Break','Other'];
+ return `<div class="sched-row" data-id="${slot.id}">
+   <input type="time" class="sched-start" value="${slot.start||''}">
+   <input type="time" class="sched-end" value="${slot.end||''}">
+   <select class="sched-subject">${subjects.map(s=>`<option ${slot.subject===s?'selected':''}>${s}</option>`).join('')}</select>
+   <input class="sched-label" placeholder="What to do (optional)" value="${esc(slot.label||'')}">
+   <button type="button" class="todo-del" onclick="removeScheduleRow(this)" title="Remove">✕</button>
+ </div>`;
+}
+function renderScheduleRows(){
+ document.getElementById('scheduleRows').innerHTML=scheduleDraft.map(scheduleRowHTML).join('');
+}
+function addScheduleRow(){
+ scheduleDraft.push({id:Date.now()+Math.random(),start:'',end:'',subject:'Physics',label:''});
+ renderScheduleRows();
+}
+function removeScheduleRow(btn){
+ const id=btn.closest('.sched-row').dataset.id;
+ scheduleDraft=scheduleDraft.filter(s=>String(s.id)!==String(id));
+ renderScheduleRows();
+}
+function openScheduleModal(){
+ const existing=todaysSlots();
+ scheduleDraft=existing.length?JSON.parse(JSON.stringify(existing)):[{id:Date.now(),start:'09:00',end:'10:00',subject:'Physics',label:''}];
+ renderScheduleRows();
+ document.getElementById('scheduleModal').style.display='flex';
+}
+function closeScheduleModal(){document.getElementById('scheduleModal').style.display='none'}
+function skipScheduleToday(){localStorage.setItem('jeeScheduleLastPrompt',todayKey());closeScheduleModal()}
+function saveScheduleModal(){
+ const rows=[...document.querySelectorAll('#scheduleRows .sched-row')];
+ const slots=rows.map(row=>({
+   id:row.dataset.id,
+   start:row.querySelector('.sched-start').value,
+   end:row.querySelector('.sched-end').value,
+   subject:row.querySelector('.sched-subject').value,
+   label:row.querySelector('.sched-label').value.trim()
+ })).filter(s=>s.start||s.end||s.label);
+ schedule[todayKey()]=slots;
+ saveSchedule();
+ localStorage.setItem('jeeScheduleLastPrompt',todayKey());
+ closeScheduleModal();
+ renderDashboardSchedule();
+ populateTimerTaskSelect();
+ toast("Today's schedule saved 📅");
+}
+document.getElementById('scheduleModal').addEventListener('click',e=>{
+ if(e.target.id==='scheduleModal')closeScheduleModal();
 });
+
+function renderDashboardSchedule(){
+ const box=document.getElementById('scheduleList');
+ if(!box)return;
+ const slots=todaysSlots();
+ if(!slots.length){
+   box.innerHTML='<div class="empty">No schedule set for today. <span style="color:var(--accent2);cursor:pointer" onclick="openScheduleModal()">Plan it now →</span></div>';
+   return;
+ }
+ const now=new Date();
+ const nowStr=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+ box.innerHTML=slots.map(s=>{
+   const active=s.start&&s.end&&nowStr>=s.start&&nowStr<s.end;
+   return `<div class="revision"${active?' style="border-color:var(--accent);background:#1b1530"':''}>
+     <div>
+       <div class="subject">${esc(s.subject).toUpperCase()}${active?' • NOW':''}</div>
+       <h3>${s.start||'--:--'} – ${s.end||'--:--'}</h3>
+       ${s.label?`<p>${esc(s.label)}</p>`:''}
+     </div>
+   </div>`;
+ }).join('');
+}
+
+/* Auto-prompt once per day */
+setTimeout(()=>{
+ if(localStorage.getItem('jeeScheduleLastPrompt')!==todayKey())openScheduleModal();
+},500);
+
+/* ===== Timer task picker (linked to today's schedule) ===== */
+function populateTimerTaskSelect(){
+ const sel=document.getElementById('timerTaskSelect');
+ if(!sel)return;
+ const slots=todaysSlots();
+ sel.innerHTML='<option value="">No task selected — pick from today\'s schedule</option>'+
+   slots.map(s=>`<option value="${s.id}">${s.start||'--:--'}–${s.end||'--:--'} ${esc(s.subject)}${s.label?': '+esc(s.label):''}</option>`).join('');
+ if(timerTask){
+   const match=slots.find(s=>s.start===timerTask.start&&s.end===timerTask.end&&s.subject===timerTask.subject&&s.label===timerTask.label);
+   if(match)sel.value=String(match.id);
+ }
+}
+function selectTimerTask(){
+ const sel=document.getElementById('timerTaskSelect');
+ const val=sel.value;
+ if(!val){
+   timerTask=null;
+ }else{
+   const slot=todaysSlots().find(s=>String(s.id)===val);
+   timerTask=slot?{start:slot.start,end:slot.end,subject:slot.subject,label:slot.label}:null;
+   if(timerTask&&['Physics','Chemistry','Maths'].includes(timerTask.subject)){
+     const subjSel=document.getElementById('timerSubject');
+     if(subjSel)subjSel.value=timerTask.subject;
+   }
+ }
+ saveTimerState();
+ renderTimerTaskDisplay();
+}
+function renderTimerTaskDisplay(){
+ const el=document.getElementById('timerTaskActive');
+ if(!el)return;
+ if(!timerTask){el.style.display='none';el.textContent='';return}
+ el.style.display='block';
+ el.textContent=`🎯 ${timerTask.start||'--:--'}–${timerTask.end||'--:--'} ${timerTask.subject}${timerTask.label?' — '+timerTask.label:''}`;
+}
 document.getElementById('testForm').addEventListener('submit', function(e){
   e.preventDefault();
 
@@ -1150,7 +1221,7 @@ function deleteTest(id){tests=tests.filter(x=>x.id!==id);saveTests();renderTests
 function clearTests(){if(confirm('Delete all test results?')){tests=[];saveTests();renderTests();toast('Test history cleared')}}
 
 /* ===== Settings / Backup ===== */
-const ALL_STORAGE_KEYS=['jeeRevisionData','jeeStudyTimeLog','jeeTimerStateV2','pomodoroSessions','jeeDailyTargets','jeeMistakes','jeeTests','jeeTodos'];
+const ALL_STORAGE_KEYS=['jeeRevisionData','jeeStudyTimeLog','jeeTimerStateV2','pomodoroSessions','jeeDailyTargets','jeeTests','jeeSchedule','jeeScheduleLastPrompt'];
 
 function exportData(){
   const bundle={exportedAt:new Date().toISOString(),version:2,data:{}};
@@ -1198,7 +1269,7 @@ function importData(evt){
 }
 
 function resetEverything(){
-  if(!confirm('This deletes ALL data in this app (lessons, revisions, tests, mistakes, targets, study time, timer). This cannot be undone. Continue?'))return;
+  if(!confirm('This deletes ALL data in this app (lessons, revisions, tests, targets, study time, timer). This cannot be undone. Continue?'))return;
   if(!confirm('Are you absolutely sure? Consider exporting a backup first. Type OK to confirm deletion.'))return;
   ALL_STORAGE_KEYS.forEach(k=>localStorage.removeItem(k));
   toast('Everything reset — reloading…');
